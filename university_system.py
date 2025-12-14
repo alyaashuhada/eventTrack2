@@ -213,7 +213,18 @@ class UniversitySystem:
         email = self.get_input(f"Email [{student.email}]", required=False) or student.email
         major = self.get_input(f"Major [{student.major}]", required=False) or student.major
         year_input = self.get_input(f"Year [{student.year}]", required=False)
-        year = int(year_input) if year_input else student.year
+        
+        if year_input:
+            try:
+                year = int(year_input)
+                if year < 1 or year > 4:
+                    print("  Warning: Year must be between 1 and 4. Using current value.")
+                    year = student.year
+            except ValueError:
+                print("  Warning: Invalid year value. Using current value.")
+                year = student.year
+        else:
+            year = student.year
         
         updated_student = Student(student_id, name, email, major, year, student.enrollment_date)
         
