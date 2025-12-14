@@ -1,0 +1,5 @@
+# Core dependencies for University Information System
+# No external dependencies needed - using Python standard library
+# sqlite3 - included in Python standard library
+# datetime - included in Python standard library
+# json - included in Python standard library
